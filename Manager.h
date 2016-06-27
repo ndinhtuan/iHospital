@@ -25,13 +25,15 @@ public:
 			}
 		}
 		list.displayDataUser();
-		cout << "+++++++++++++++++++++" << endl;
+		cout << "===================================" << endl;
 		list.displayInfoUser();
 	}
 	void delUser();
 	void delAll();
 	void editLastID() const;
 	void createDataForUsers() const;
+	void menu();
+
 private:
 	ListMember list;
 

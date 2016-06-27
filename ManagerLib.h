@@ -24,6 +24,7 @@ public:
 	void popWithId(long long id);
 	void delAllNodes();
 	void popTail();
+	
 private:
 	Node *head;
 	Node *tail;

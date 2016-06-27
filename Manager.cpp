@@ -95,8 +95,13 @@ void Manager::delAll(){
 		return;
 	}
 
-	for (Node *tmpNode = list.getHead(); tmpNode != list.getTail()->next; tmpNode = tmpNode->next){
+	for (Node *tmpNode = list.getHead(); tmpNode != list.getTail()->next
+		 ; tmpNode = tmpNode->next){
+
+		cout << "Removing user has id : " << tmpNode->data.id << " ... ";
 		delIdInfo(tmpNode->data.id);
+		delIdData(tmpNode->data.id);
+		cout << "done!" << endl;
 		//list.popWithId(tmpNode->data.id);
 	}
 	list.delAllNodes();
@@ -135,5 +140,31 @@ void Manager::createDataForUsers() const{
 
 		ofstream out(fileName, std::ios::app);
 		out.close();
+	}
+}
+
+void Manager::menu(){
+	cout << "1. Display User" << endl;
+	cout << "2. Creat Data For All Of Users" << endl;
+	cout << "3. Edit Last ID" << endl;
+	cout << "4. Delete User" << endl;
+	cout << "5. Delete All of Users" << endl;
+	cout << "6. Exit" << endl;
+
+	int choice;
+
+	do
+	{
+		cout << "Enter your choice : "; cin >> choice;
+	} while (choice != 1 && choice != 2 && choice != 3
+		     && choice != 4 && choice != 5 && choice != 6);
+
+	switch (choice){
+	case 1: display(); break;
+	case 2: createDataForUsers(); break;
+	case 3: editLastID(); break;
+	case 4: delUser(); break;
+	case 5: delAll(); break;
+	case 6: exit(0); break;
 	}
 }
